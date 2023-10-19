@@ -95,7 +95,9 @@ class CepModel {
 
   factory CepModel.fromMap(Map<String, dynamic> map) {
     return CepModel(
-      id: map['id'] != null ? map['id'] as String : '',
+      id: map['id'] != null
+        ? map['id'] as String
+        : (map['objectId'] != null ? map['objectId'] as String : ''),
       cep: (map['cep'] as String).replaceAll(RegExp('[^0-9]'), ''),
       logradouro: map['logradouro'] as String,
       complemento: map['complemento'] as String,
