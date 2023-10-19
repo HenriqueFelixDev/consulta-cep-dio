@@ -13,6 +13,17 @@ class AppTheme {
     return ThemeData(
       colorSchemeSeed: const Color(0xFF2637CD),
       textTheme: GoogleFonts.muktaTextTheme(),
+      buttonTheme: ButtonThemeData(),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          shape: const StadiumBorder(),
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          shape: const StadiumBorder(),
+        ),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
         enabledBorder: defaultInputBorder,

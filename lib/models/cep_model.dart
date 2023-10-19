@@ -29,6 +29,22 @@ class CepModel {
     required this.siafi,
   });
 
+  factory CepModel.initial() {
+    return const CepModel(
+      id: '',
+      cep: '',
+      logradouro: '',
+      complemento: '',
+      bairro: '',
+      localidade: '',
+      uf: '',
+      ibge: '',
+      gia: '',
+      ddd: '',
+      siafi: '',
+    );
+  }
+
   CepModel copyWith({
     String? id,
     String? cep,
@@ -69,7 +85,7 @@ class CepModel {
       ..set('gia', gia)
       ..set('ddd', ddd)
       ..set('siafi', siafi);
-    
+
     if (includeId) {
       object.objectId = id;
     }
@@ -96,8 +112,8 @@ class CepModel {
   factory CepModel.fromMap(Map<String, dynamic> map) {
     return CepModel(
       id: map['id'] != null
-        ? map['id'] as String
-        : (map['objectId'] != null ? map['objectId'] as String : ''),
+          ? map['id'] as String
+          : (map['objectId'] != null ? map['objectId'] as String : ''),
       cep: (map['cep'] as String).replaceAll(RegExp('[^0-9]'), ''),
       logradouro: map['logradouro'] as String,
       complemento: map['complemento'] as String,
@@ -113,7 +129,8 @@ class CepModel {
 
   String toJson() => json.encode(toMap());
 
-  factory CepModel.fromJson(String source) => CepModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory CepModel.fromJson(String source) =>
+      CepModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -123,33 +140,32 @@ class CepModel {
   @override
   bool operator ==(covariant CepModel other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.cep == cep &&
-      other.logradouro == logradouro &&
-      other.complemento == complemento &&
-      other.bairro == bairro &&
-      other.localidade == localidade &&
-      other.uf == uf &&
-      other.ibge == ibge &&
-      other.gia == gia &&
-      other.ddd == ddd &&
-      other.siafi == siafi;
+
+    return other.id == id &&
+        other.cep == cep &&
+        other.logradouro == logradouro &&
+        other.complemento == complemento &&
+        other.bairro == bairro &&
+        other.localidade == localidade &&
+        other.uf == uf &&
+        other.ibge == ibge &&
+        other.gia == gia &&
+        other.ddd == ddd &&
+        other.siafi == siafi;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      cep.hashCode ^
-      logradouro.hashCode ^
-      complemento.hashCode ^
-      bairro.hashCode ^
-      localidade.hashCode ^
-      uf.hashCode ^
-      ibge.hashCode ^
-      gia.hashCode ^
-      ddd.hashCode ^
-      siafi.hashCode;
+        cep.hashCode ^
+        logradouro.hashCode ^
+        complemento.hashCode ^
+        bairro.hashCode ^
+        localidade.hashCode ^
+        uf.hashCode ^
+        ibge.hashCode ^
+        gia.hashCode ^
+        ddd.hashCode ^
+        siafi.hashCode;
   }
 }

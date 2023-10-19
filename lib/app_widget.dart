@@ -13,21 +13,21 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Consulta CEP',
-      theme: AppTheme.light(),
-      home: MultiProvider(
-        providers: [
-          Provider<CepDatasource>(
-            create: (_) => CepDatasourceProxy(
-              cepDatasource: CepDatasourceImpl(),
-            ),
+    return MultiProvider(
+      providers: [
+        Provider<CepDatasource>(
+          create: (_) => CepDatasourceProxy(
+            cepDatasource: CepDatasourceImpl(),
           ),
-          Provider<CepRepository>(
-            create: (context) => CepRepository(cepDatasource: context.read()),
-          ),
-        ],
-        child: const CepSearchPage(),
+        ),
+        Provider<CepRepository>(
+          create: (context) => CepRepository(cepDatasource: context.read()),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Consulta CEP',
+        theme: AppTheme.light(),
+        home: const CepSearchPage(),
       ),
     );
   }
