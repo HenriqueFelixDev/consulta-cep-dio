@@ -13,7 +13,7 @@ class CepRepository {
   }
 
   Future<void> updateCep(CepModel cep) {
-    return _cepDatasource.createCep(cep);
+    return _cepDatasource.updateCep(cep);
   }
 
   Future<List<CepModel>> searchCeps(String search) {
