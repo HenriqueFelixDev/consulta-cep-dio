@@ -11,9 +11,17 @@ class AppTheme {
     );
 
     return ThemeData(
-      colorSchemeSeed: const Color(0xFF2637CD),
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: const Color(0xFF2637CD),
+        error: const Color(0xFFC91A1A),
+        onError: Colors.white,
+      ),
       textTheme: GoogleFonts.muktaTextTheme(),
-      buttonTheme: ButtonThemeData(),
+      dialogTheme: DialogTheme(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           shape: const StadiumBorder(),

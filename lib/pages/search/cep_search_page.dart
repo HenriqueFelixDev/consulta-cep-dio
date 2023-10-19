@@ -17,8 +17,28 @@ class CepSearchPage extends StatelessWidget {
   }
 }
 
-class _CepSearchView extends StatelessWidget {
+class _CepSearchView extends StatefulWidget {
   const _CepSearchView();
+
+  @override
+  State<_CepSearchView> createState() => _CepSearchViewState();
+}
+
+class _CepSearchViewState extends State<_CepSearchView> {
+  @override
+  void initState() {
+    super.initState();
+
+    final controller = context.read<CepSearchController>();
+
+    controller.addListener(() {
+      if (controller.error != null) {
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(CepSnackbar.error(content: Text(controller.error!)));
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

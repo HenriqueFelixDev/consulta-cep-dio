@@ -37,4 +37,14 @@ class CepSearchController extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> deleteCep(CepModel cep) async {
+    try {
+      _error = null;
+      await _cepRepository.deleteCep(cep.id);
+    } catch (e) {
+      _error = 'Ocorreu um erro ao excluir o CEP';
+      notifyListeners();
+    }
+  }
 }
