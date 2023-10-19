@@ -94,15 +94,10 @@ class _CepSearchHeader extends StatelessWidget {
       ),
       child: TextField(
         onChanged: (value) => controller.search = value,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           filled: true,
-          fillColor: const Color(0xFFEBEFFF),
-          suffixIcon: IconButton(
-            onPressed: () {
-              controller.searchCeps();
-            },
-            icon: const Icon(Icons.search),
-          ),
+          fillColor: Color(0xFFEBEFFF),
+          prefixIcon: Icon(Icons.search),
           hintText: 'Pesquise por um CEP',
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../models/debounce.dart';
 import '../../models/cep_model.dart';
 import '../../repositories/cep/cep_repository.dart';
 
@@ -10,9 +11,15 @@ class CepSearchController extends ChangeNotifier {
     required CepRepository cepRepository,
   }) : _cepRepository = cepRepository;
 
+  final _debounce = Debounce();
+
   String _search = '';
   String get search => _search;
-  set search(String value) => _search = value;
+
+  set search(String value) {
+    _search = value;
+    _debounce(searchCeps);
+  }
 
   List<CepModel> _ceps = [];
   List<CepModel> get ceps => _ceps;
